@@ -1,56 +1,111 @@
-import java.util.Scanner;
-
 class Espectador{
-    String nom;
-    int edat;
-    double diners;
+    // BÉ
+    private String nom;
+    private int edat;
+    private double diners;
 
-    public Espectador() {
-        this.nom = "anonim";
+    // Constructor 1 \\
+    public Espectador(String nom, int edat, double diners) {
+        this.nom = nom;
+        this.edat = edat;
+        this.diners = diners;
+    }
+
+    // Constructor 2 \\
+    public Espectador(int edat, double diners) {
+        this.nom = "Anònim";
+        this.edat = edat;
+        this.diners = diners;
+    }
+
+    // Contructor 3 \\
+    public Espectador(double diners) {
+        this.nom = "Anònim";
         this.edat = 99;
-        this.diners = 0;
+        this.diners = diners;
+    }
+
+    public String getNom(){ // BÉ
+        return this.nom;
+    }
+
+    public int getEdat(){ // BÉ
+        return this.edat;
+    }
+
+    public double getDiners(){ // BÉ
+        return this.diners;
+    }
+
+    public void setNom(String nom){ // BÉ
+        // En Anglès diu "això (atribut) és --> (equival a està variable)"
+        this.nom = nom;
+    }
+
+    public void setEdat(int edat){ // BÉ
+        this.edat = edat;
+    }
+
+    public void setDiners(double diners){ // BÉ
+        this.diners = diners;
+    }
+
+    public void pagarEntrada(){
+        this.diners = this.diners - 24;
+    }
+
+    public void majorEdat(){ // BÉ
+        if (this.edat < 18)
+            System.out.println("És menor d'edat");
+        else
+            System.out.println("És major d'edat");
+    }
+
+    public boolean teDiners(){ // BÉ
+        if(this.diners - 24 < 0)
+            return false;
+        else
+            return true;
+    }
+
+    public String toString(){ // BÉ
+        System.out.println("El nom de la persona és: " + this.nom + ", edat: " + this.edat + ", diners que té: " + this.diners + "€");
+        return "El nom de la persona és: " + this.nom + ", edat: " + this.edat + ", diners que té: " + this.diners + "€";
+    }
+
+    public static void main(String[] args) {
+        Espectador persona1 = new Espectador("Holivia Holt", 24, (double)24);
+        Espectador persona2 = new Espectador(98, (double)12);
+        Espectador persona3 = new Espectador((double)250);
+
+        // PROVA 1 \\
+        persona1.toString();
+        System.out.println();
+        persona2.toString();
+        System.out.println();
+        persona3.toString();
+        System.out.println();
+        // Canviem atributs
+        persona1.setEdat(25);
+        persona2.setDiners((double)23);
+        persona3.setNom("Bernardo");
+        // Comprovem que els canvis s'han desat
+        persona1.toString();
+        System.out.println();
+        persona2.toString();
+        System.out.println();
+        persona3.toString();
+        System.out.println();
         
+        // PROVA 2 \\
+        if(persona1.teDiners())
+            persona1.pagarEntrada();
+        persona1.toString();
+        if(persona2.teDiners())
+            persona2.pagarEntrada();
+        persona2.toString();
+        if(persona3.teDiners())
+            persona3.pagarEntrada();
+        persona3.toString();
     }
-
-    public String getNom(){
-
-    }
-
-    public int getEdat(){
-   
-    }
-
-    public double getDiners(){
-   
-    }
-
-    public String setNom(){
-
-    }
-
-    public int setEdat(){
-
-    }
-
-    public double setDiners(){
-
-    }
-
-    public double pagarEntrada(){
-    
-    }
-
-    public int majorEdat(){
-    
-    }
-
-    public double teDiners(){
-    
-    }
-
-    public String toString(){
-    
-    }
-
 }
-
