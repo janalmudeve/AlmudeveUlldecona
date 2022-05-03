@@ -1,1 +1,56 @@
-a
+import java.util.Scanner;
+
+class Espectador{
+    String nom;
+    int edat;
+    double diners;
+
+    public Espectador() {
+        this.nom = "anonim";
+        this.edat = 99;
+        this.diners = 0;
+        
+    }
+
+    public String getNom(){
+
+    }
+
+    public int getEdat(){
+   
+    }
+
+    public double getDiners(){
+   
+    }
+
+    public String setNom(){
+
+    }
+
+    public int setEdat(){
+
+    }
+
+    public double setDiners(){
+
+    }
+
+    public double pagarEntrada(){
+    
+    }
+
+    public int majorEdat(){
+    
+    }
+
+    public double teDiners(){
+    
+    }
+
+    public String toString(){
+    
+    }
+
+}
+
