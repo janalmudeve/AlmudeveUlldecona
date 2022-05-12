@@ -1,0 +1,19 @@
+public class TestArrayEspectadors{
+    public static void main (String[] args) {
+        Espectador[] espectadors = new Espectador[4];
+
+        espectadors[0] = new Espectador("Austin North", 25, 200);
+        espectadors[1] = new Espectador("Olivia Holt", 24, 50);
+
+        Espectador[][] seient = new Espectador[4][6];
+
+        seient[1][1] = espectadors[0];
+        seient[2][1] = espectadors[1];
+
+        for(int i = 0; i<seient.length; i++){
+            for(int j = 0; j<seient[i].length; j++){
+                System.out.println(seient[i][j]);
+            }
+        }
+    }
+}
