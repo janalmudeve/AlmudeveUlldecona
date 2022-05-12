@@ -1,0 +1,88 @@
+class Sessio{
+    // BÉ
+    private String obra;
+    private double preu;
+    private String hora;
+    private String dia;
+    private Espectador seients[][];
+    // Objeto[][] matriz = new Objeto[3][3];
+
+
+    // Constructor 1 \\
+    public Sessio(String obra, double preu, String hora, String dia, Espectador seients[][]) {
+        this.obra = obra;
+        this.preu = preu;
+        this.hora = hora;
+        this.dia = dia;
+        this.seients = seients;
+    }
+
+    public String getObra(){ // BÉ
+        return this.obra;
+    }
+
+    public double getPreu(){ // BÉ
+        return this.preu;
+    }
+
+    public String getHora(){ // BÉ
+        return this.hora;
+    }
+
+    public String getDia(){ // BÉ
+        return this.dia;
+    }
+
+    public Espectador[][] getSeient(){ // BÉ
+        return this.seients;
+    }
+
+    public void setObra(String obra){ // BÉ
+        this.obra = obra;
+    }
+
+    public void setPreu(double preu){ // BÉ
+        this.preu = preu;
+    }
+
+    public void setHora(String hora){ // BÉ
+        this.hora = hora;
+    }
+
+    public void setDia(String dia){ // BÉ
+        this.dia = dia;
+    }
+
+    public void setSeients(Espectador seients[][]){ // BÉ
+        this.seients = seients;
+    }
+
+    /* public void pagarEntrada(){
+        this.diners = this.diners - 24;
+    }
+
+    public void majorEdat(){ // BÉ
+        if (this.edat < 18)
+            System.out.println("És menor d'edat");
+        else
+            System.out.println("És major d'edat");
+    }
+
+    public boolean teDiners(){ // BÉ
+        if(this.diners - 24 < 0)
+            return false;
+        else
+            return true;
+    } 
+*/    
+
+public String toString(){
+    String retorn = "";
+    return retorn;
+}
+
+    public static void main(String[] args) {
+        Sessio butaca1 = new Sessio("I didn't do it", 24, "10:30", "19/11/2003", );
+        
+    }
+}
