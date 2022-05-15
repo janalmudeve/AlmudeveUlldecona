@@ -1,5 +1,5 @@
 class Sessio {
-    // BÉ
+    
     private Obra obra;
     private double preu;
     private String hora;
@@ -15,47 +15,46 @@ class Sessio {
         this.seients = new Espectador[18][14];
     }
 
-    public Obra getObra() { // BÉ
+    public Obra getObra() { 
         return this.obra;
     }
 
-    public double getPreu() { // BÉ
+    public double getPreu() { 
         return this.preu;
     }
 
-    public String getHora() { // BÉ
+    public String getHora() { 
         return this.hora;
     }
 
-    public String getDia() { // BÉ
+    public String getDia() { 
         return this.dia;
     }
 
-    public Espectador[][] getSeients() { // BÉ
+    public Espectador[][] getSeients() { 
         return this.seients;
     }
 
-    public void setObra(String obra) { // BÉ
+    public void setObra(String obra) { 
         this.obra = obra;
     }
 
-    public void setPreu(double preu) { // BÉ
+    public void setPreu(double preu) { 
         this.preu = preu;
     }
 
-    public void setHora(String hora) { // BÉ
+    public void setHora(String hora) { 
         this.hora = hora;
     }
 
-    public void setDia(String dia) { // BÉ
+    public void setDia(String dia) { 
         this.dia = dia;
     }
 
-    public void setSeients(Espectador[][] seients) { // BÉ
+    public void setSeients(Espectador[][] seients) { 
         this.seients = seients[18][14];
     }
-
-    // "Facilets"
+    
     public boolean seientBuit(int filera, int columna) {
         if(this.seients[filera][columna] == null)
             return true;
@@ -72,8 +71,6 @@ class Sessio {
         return true;
     }
 
-
-    // "Dificileta"
     public boolean potEntrar(boolean majorEdat, boolean diners) {
         //major edat
         if(this.obra == true)
