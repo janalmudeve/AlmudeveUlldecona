@@ -1,98 +1,92 @@
 class Sessio {
-    
-    private Obra obra;
+
+    private Obra obra = new Obra("I didn't do it", 24, "Olivia Holt", true);
     private double preu;
     private String hora;
     private String dia;
-    private Espectador[][] seients; 
+    private Espectador[][] seients;
 
     // Constructor \\
-    public Sessio(String obra, double preu, String hora, String dia) {
-        this.obra = obra;
+    public Sessio(Obra obra, double preu, String hora, String dia) {
+        this.obra = new Obra (obra);
         this.preu = preu;
         this.hora = hora;
         this.dia = dia;
         this.seients = new Espectador[18][14];
     }
 
-    public Obra getObra() { 
+    public Obra getObra() {
         return this.obra;
     }
 
-    public double getPreu() { 
+    public double getPreu() {
         return this.preu;
     }
 
-    public String getHora() { 
+    public String getHora() {
         return this.hora;
     }
 
-    public String getDia() { 
+    public String getDia() {
         return this.dia;
     }
 
-    public Espectador[][] getSeients() { 
+    public Espectador[][] getSeients() {
         return this.seients;
     }
 
-    public void setObra(String obra) { 
+    public void setObra(Obra obra) {
         this.obra = obra;
     }
 
-    public void setPreu(double preu) { 
+    public void setPreu(double preu) {
         this.preu = preu;
     }
 
-    public void setHora(String hora) { 
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-    public void setDia(String dia) { 
+    public void setDia(String dia) {
         this.dia = dia;
     }
 
-    public void setSeients(Espectador[][] seients) { 
+    public void setSeients(Espectador[][] seients) {
         this.seients = seients[18][14];
     }
-    
+
     public boolean seientBuit(int filera, int columna) {
-        if(this.seients[filera][columna] == null)
+        if (this.seients[filera][columna] == null)
             return true;
         else
             return false;
     }
 
     public boolean assignarSeient(Espectador espectador, int filera, int columna) {
-        if(this.seientBuit(filera, columna))
+        if (this.seientBuit(filera, columna))
             this.seients[filera][columna] = espectador;
         else
             return false;
-        
+
         return true;
     }
 
-    public boolean potEntrar(boolean majorEdat, boolean diners) {
+    public boolean potEntrar() {
         //major edat
-        if(this.obra == true)
-            majorEdat = true
-        else
-            majorEdat = false
+        
         //te diners
-        if(this.preu < )
-            diners = true
-        else
-            diners = false
+        
         //obra es per a majors
         
     }
-    
+
     public void totalRecaudat() {
-        
+
     }
 
     public String toString(String resultat) {
-        resultat = "La persona s'asentara a la butaca" + 
+        resultat = "La persona s'asentara a la butaca" ;
+        return resultat;
     }
-
 
 }
