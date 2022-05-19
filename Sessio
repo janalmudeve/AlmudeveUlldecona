@@ -1,18 +1,20 @@
-class Sessio {
+package Teatregrama;
 
-    private Obra obra = new Obra("I didn't do it", 24, "Olivia Holt", true);
+public class Sessio {
+
+    private Obra obra;
     private double preu;
     private String hora;
     private String dia;
     private Espectador[][] seients;
 
     // Constructor \\
-    public Sessio(Obra obra, double preu, String hora, String dia) {
-        this.obra = new Obra (obra);
+    public Sessio(Obra obra, double preu, String hora, String dia, int fileres, int columnes) {
+        this.obra = obra;
         this.preu = preu;
         this.hora = hora;
         this.dia = dia;
-        this.seients = new Espectador[18][14];
+        this.seients = new Espectador[fileres][columnes];
     }
 
     public Obra getObra() {
@@ -51,42 +53,37 @@ class Sessio {
         this.dia = dia;
     }
 
-    public void setSeients(Espectador[][] seients) {
-        this.seients = seients[18][14];
-    }
-
-    public boolean seientBuit(int filera, int columna) {
-        if (this.seients[filera][columna] == null)
-            return true;
-        else
-            return false;
-    }
-
     public boolean assignarSeient(Espectador espectador, int filera, int columna) {
-        if (this.seientBuit(filera, columna))
+        if(this.seients == null) {
             this.seients[filera][columna] = espectador;
-        else
-            return false;
-
-        return true;
+            return true;
+        }
+        return false;
     }
 
-    public boolean potEntrar() {
-        //major edat
-        
-        //te diners
-        
-        //obra es per a majors
-        
+    public boolean potEntrar(Obra obra, Espectador espectador) { 
+        if(obra.getEdat() && espectador.majorEdat()) {
+            if(espectador.teDiners(this.preu)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void totalRecaudat() {
-
+    public double totalRecaudat() {
+        int contador = 0;
+        
+        for(int i = 0;i < this.seients.length;i++) {
+            for(int j = 0;j < this.seients[0].length;j++) {
+                if(this.seients[i][j] != null)
+                    contador++;
+            }
+        }
+        return (Double)(contador * this.preu);
     }
 
     public String toString(String resultat) {
-        resultat = "La persona s'asentara a la butaca" ;
+        resultat = "[Obra: "+this.obra.getTitol()+", Preu: "+this.preu+", Dia: "+this.dia+", Hora: "+this.hora+"]";
         return resultat;
     }
-
 }
