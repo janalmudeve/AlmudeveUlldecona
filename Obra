@@ -1,4 +1,6 @@
-class Obra{
+package Teatregrama;
+
+public class Obra{
     private String titol;
     private int durada;
     private String autor;
@@ -48,25 +50,4 @@ class Obra{
         String retorn = "El titol de l'obra és: " + this.titol + ", el nom de l'autor: " + this.autor + ", la funncio dura: " + this.durada + ", edat de l'espectador: " + this.edat;
         return retorn;
     }
- 
-    // MALAMENT
-    public static void main(String[] args) {
-        Obra obra1 = new Obra("I didn't do it", 20, "Olivia Holt", true);
-        Obra obra2 = new Obra("I didn't do it", 22, "Austin North", true);
-        Obra obra3 = new Obra("I didn't do it", 23, "Piper Curda", false);
- 
-        // Prova 1 (canviar valors)
-        // imprimim per veure els valors per defecte
-        obra1.toString();
-        obra2.toString();
-        obra3.toString();
-        // Canviem els valors
-        obra1.setEdat(false);
-        obra2.setDurada(21);
-        obra3.setTitol("La Que Se Avecina");
-        // Comprovem
-        obra1.toString();
-        obra2.toString();
-        obra3.toString();
-    }
- }
+}
