@@ -1,0 +1,60 @@
+@startuml
+
+class Obra{
+    String titol
+    int durada
+    String autor
+    boolean edat
+- public Obra(String titol, int durada, String autor, boolean edat)
+- public String getTitol()
+- public int getDurada()
+- public String getAutor()
+- public boolean getEdat()
+- public void setTitol(String titol)
+- public void setDurada(int durada)
+- public void setAutor(String autor)
+- public void setEdat(boolean edat)
+- public String toString()
+}
+
+class Espectador{
+    String nom
+    int edat
+    double diners
+- public Espectador(String nom, int edat, double diners)
+- public Espectador(int edat, double diners)
+- public Espectador(double diners)
+- public String getNom()
+- public int getEdat()
+- public double getDiners()
+- public void setNom(String nom)
+- public void setEdat(int edat)
+- public void setDiners(double diners)
+- public void pagarEntrada()
+- public void majorEdat()
+- public boolean teDiners()
+- public String toString()
+}
+
+class Sessio{
+    Obra obra
+    double preu
+    String hora
+    String dia
+    Espectador seinets
+- public Sessio(Obra obra, double preu, String hora, String dia, int fileres, int columnes)
+- public String getObra()
+- public double getPreu()
+- public String getHora()
+- public String getDia()
+- public Espectador[][] getSeient()
+- public void setObra(Obra obra)
+- public void setPreu(double preu)
+- public void setHora(String hora)
+- public void setDia(String dia)
+- public boolean assignarSeients(Espectador espectador, int filera, int columna)
+- public boolean potEntrar(Obra obra, Espectador espectador)
+- public double totalRecaudat()
+- public String toString()
+}
+@enduml
