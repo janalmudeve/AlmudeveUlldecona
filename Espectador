@@ -1,77 +1,123 @@
 package Teatregrama;
 
-public class Espectador{
-    // BÉ
+public class Espectador {
+
     private String nom;
     private int edat;
     private double diners;
 
-    // Constructor 1 \\
+    // Constructor \\
     public Espectador(String nom, int edat, double diners) {
         this.nom = nom;
         this.edat = edat;
         this.diners = diners;
     }
 
-    // Constructor 2 \\
     public Espectador(int edat, double diners) {
         this.nom = "Anònim";
         this.edat = edat;
         this.diners = diners;
     }
 
-    // Contructor 3 \\
     public Espectador(double diners) {
         this.nom = "Anònim";
         this.edat = 99;
         this.diners = diners;
     }
 
-    public String getNom(){ // BÉ
+    /**
+     * Obtenir el Nom
+     * 
+     * @return String
+     */
+    public String getNom() {
         return this.nom;
     }
 
-    public int getEdat(){ // BÉ
+    /**
+     * Obtenir l'Edat
+     * 
+     * @return int
+     */
+    public int getEdat() {
         return this.edat;
     }
 
-    public double getDiners(){ // BÉ
+    /**
+     * Obtenir els Diners
+     * 
+     * @return double
+     */
+    public double getDiners() {
         return this.diners;
     }
 
-    public void setNom(String nom){ // BÉ
-        // En Anglès diu "això (atribut) és --> (equival a està variable)"
+    /**
+     * Donar valor a Nom
+     * 
+     * @param nom
+     */
+    public void setNom(String nom) {
+
         this.nom = nom;
     }
 
-    public void setEdat(int edat){ // BÉ
+    /**
+     * Donar valor a Edat
+     * 
+     * @param edat
+     */
+    public void setEdat(int edat) {
         this.edat = edat;
     }
 
-    public void setDiners(double diners){ // BÉ
+    /**
+     * Donar valor a Diners
+     * 
+     * @param diners
+     */
+    public void setDiners(double diners) {
         this.diners = diners;
     }
 
-    public void pagarEntrada(){
+    public void pagarEntrada() {
         this.diners = this.diners - 24;
     }
 
-    public boolean majorEdat(){ // BÉ
-        if(this.edat >= 18)
+    /**
+     * Comprovar que l'Espectador sigue major d'edat
+     * 
+     * @return boolean
+     */
+    public boolean majorEdat() {
+        if (this.edat >= 18)
             return true;
         else
             return false;
     }
 
-    public boolean teDiners(double preu){ // BÉ
-        if(this.diners - preu < 0)
+    /**
+     * comprovar que tinge diners suficients l'Espectador
+     * 
+     * @param preu
+     * @return boolean
+     */
+    public boolean teDiners(double preu) {
+        if (this.diners - preu < 0)
             return false;
         else
             return true;
     }
 
-    public String toString(){ // BÉ
-        System.out.println("El nom de la persona és: " + this.nom + ", edat: " + this.edat + ", diners que té: " + this.diners + "€");
-        return "El nom de la persona és: " + this.nom + ", edat: " + this.edat + ", diners que té: " + this.diners + "€";
+    /**
+     * Imprimir tots els atributs d'Espectador
+     * 
+     * @return String
+     */
+    public String toString() {
+        System.out.println("El nom de la persona és: " + this.nom + ", edat: " + this.edat + ", diners que té: "
+                + this.diners + "€");
+        return "El nom de la persona és: " + this.nom + ", edat: " + this.edat + ", diners que té: " + this.diners
+                + "€";
     }
 }
