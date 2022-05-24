@@ -1,11 +1,11 @@
 package Teatregrama;
 
-public class Obra{
+public class Obra {
     private String titol;
     private int durada;
     private String autor;
     private boolean edat;
- 
+
     // Constructor \\
     public Obra(String titol, int durada, String autor, boolean edat) {
         this.titol = titol;
@@ -13,41 +13,87 @@ public class Obra{
         this.autor = autor;
         this.edat = edat;
     }
-  
-    public String getTitol(){
+
+    /**
+     * Obtenir valor de Titol
+     * 
+     * @return String
+     */
+    public String getTitol() {
         return this.titol;
     }
-  
-    public int getDurada(){
+
+    /**
+     * Obtenir valor de Durada
+     * 
+     * @return int
+     */
+    public int getDurada() {
         return this.durada;
     }
-  
-    public String getAutor(){
+
+    /**
+     * Obtenir valor de Autor
+     * 
+     * @return String
+     */
+    public String getAutor() {
         return this.autor;
     }
- 
-    public boolean getEdat(){
+
+    /**
+     * Obtenir valor de Edat
+     * 
+     * @return boolean
+     */
+    public boolean getEdat() {
         return this.edat;
     }
-  
-    public void setTitol(String titol){
+
+    /**
+     * Donar valor a Titol
+     * 
+     * @param titol
+     */
+    public void setTitol(String titol) {
         this.titol = titol;
     }
-  
-    public void setDurada(int durada){
+
+    /**
+     * Donar valor a Durada
+     * 
+     * @param durada
+     */
+    public void setDurada(int durada) {
         this.durada = durada;
     }
-  
-    public void setAutor(String autor){
+
+    /**
+     * Donar valor a Autor
+     * 
+     * @param autor
+     */
+    public void setAutor(String autor) {
         this.autor = autor;
     }
- 
-    public void setEdat(boolean edat){
+
+    /**
+     * Donar valor a Edat
+     * 
+     * @param edat
+     */
+    public void setEdat(boolean edat) {
         this.edat = edat;
     }
-  
-    public String toString(){
-        String retorn = "El titol de l'obra és: " + this.titol + ", el nom de l'autor: " + this.autor + ", la funncio dura: " + this.durada + ", edat de l'espectador: " + this.edat;
+
+    /**
+     * Imprimir tots els atributs d'Obra
+     * 
+     * @return String
+     */
+    public String toString() {
+        String retorn = "El titol de l'obra és: " + this.titol + ", el nom de l'autor: " + this.autor
+                + ", la funncio dura: " + this.durada + ", edat de l'espectador: " + this.edat;
         return retorn;
     }
 }
