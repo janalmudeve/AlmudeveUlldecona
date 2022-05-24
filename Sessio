@@ -1,89 +1,99 @@
 package Teatregrama;
 
-public class Sessio {
-
-    private Obra obra;
-    private double preu;
-    private String hora;
-    private String dia;
-    private Espectador[][] seients;
+public class Obra {
+    private String titol;
+    private int durada;
+    private String autor;
+    private boolean edat;
 
     // Constructor \\
-    public Sessio(Obra obra, double preu, String hora, String dia, int fileres, int columnes) {
-        this.obra = obra;
-        this.preu = preu;
-        this.hora = hora;
-        this.dia = dia;
-        this.seients = new Espectador[fileres][columnes];
+    public Obra(String titol, int durada, String autor, boolean edat) {
+        this.titol = titol;
+        this.durada = durada;
+        this.autor = autor;
+        this.edat = edat;
     }
 
-    public Obra getObra() {
-        return this.obra;
+    /**
+     * Obtenir valor de Titol
+     * 
+     * @return String
+     */
+    public String getTitol() {
+        return this.titol;
     }
 
-    public double getPreu() {
-        return this.preu;
+    /**
+     * Obtenir valor de Durada
+     * 
+     * @return int
+     */
+    public int getDurada() {
+        return this.durada;
     }
 
-    public String getHora() {
-        return this.hora;
+    /**
+     * Obtenir valor de Autor
+     * 
+     * @return String
+     */
+    public String getAutor() {
+        return this.autor;
     }
 
-    public String getDia() {
-        return this.dia;
+    /**
+     * Obtenir valor de Edat
+     * 
+     * @return boolean
+     */
+    public boolean getEdat() {
+        return this.edat;
     }
 
-    public Espectador[][] getSeients() {
-        return this.seients;
+    /**
+     * Donar valor a Titol
+     * 
+     * @param titol
+     */
+    public void setTitol(String titol) {
+        this.titol = titol;
     }
 
-    public void setObra(Obra obra) {
-        this.obra = obra;
+    /**
+     * Donar valor a Durada
+     * 
+     * @param durada
+     */
+    public void setDurada(int durada) {
+        this.durada = durada;
     }
 
-    public void setPreu(double preu) {
-        this.preu = preu;
+    /**
+     * Donar valor a Autor
+     * 
+     * @param autor
+     */
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    /**
+     * Donar valor a Edat
+     * 
+     * @param edat
+     */
+    public void setEdat(boolean edat) {
+        this.edat = edat;
     }
 
-    public void setDia(String dia) {
-        this.dia = dia;
-    }
-
-    public boolean assignarSeient(Espectador espectador, int filera, int columna) {
-        if(this.seients == null) {
-            this.seients[filera][columna] = espectador;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean potEntrar(Obra obra, Espectador espectador) { 
-        if(obra.getEdat() && espectador.majorEdat()) {
-            if(espectador.teDiners(this.preu)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public double totalRecaudat() {
-        int contador = 0;
-        
-        for(int i = 0;i < this.seients.length;i++) {
-            for(int j = 0;j < this.seients[0].length;j++) {
-                if(this.seients[i][j] != null)
-                    contador++;
-            }
-        }
-        return (Double)(contador * this.preu);
-    }
-
-    public String toString(String resultat) {
-        resultat = "[Obra: "+this.obra.getTitol()+", Preu: "+this.preu+", Dia: "+this.dia+", Hora: "+this.hora+"]";
-        return resultat;
+    /**
+     * Imprimir tots els atributs d'Obra
+     * 
+     * @return String
+     */
+    public String toString() {
+        String retorn = "El titol de l'obra és: " + this.titol + ", el nom de l'autor: " + this.autor
+                + ", la funncio dura: " + this.durada + ", edat de l'espectador: " + this.edat;
+        return retorn;
     }
 }
