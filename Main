@@ -1,0 +1,236 @@
+package Visual;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import Teatregrama.Espectador;
+import Teatregrama.Obra;
+import Teatregrama.Sessio;
+
+public class Main {
+
+    private static Scanner teclat = new Scanner(System.in);
+
+    private static ArrayList<Obra> obres = new ArrayList<Obra>();
+    private static ArrayList<Sessio> sessions = new ArrayList<Sessio>();
+    private static ArrayList<Espectador> espectadors = new ArrayList<Espectador>();
+
+    private static final String[] OPCIONS = { "Crea una Sessió nova", "Mostrar Sessions existents",
+            "Modificar una Sessió",
+            "Crea una Obra", "Mostrar Obres existents", "Modificar una Obra", "Registrar nous Espectadors",
+            "Assignar un Espectador a una Sessió",
+            "Mostrar pati de butaques", "Sortir" };
+
+    public static void main(String[] args) {
+
+    }
+
+    private static void generarMenu() {
+        System.out.println("========================================");
+        for (int i = 0; i < OPCIONS.length; i++) {
+            System.out.println("    " + (i + 1) + ". " + OPCIONS[i]);
+        }
+        System.out.println("========================================");
+    }
+
+    private static int escollirOpcio() {
+        int opcio;
+        boolean error = false;
+        System.out.print("[?] Escull una opció del menu: ");
+        opcio = teclat.nextInt();
+
+        if (opcio <= 0 || opcio > OPCIONS.length)
+            error = true;
+
+        while (error) {
+            System.out.print("[!?] Escull una opció vàlida: ");
+            opcio = teclat.nextInt();
+
+            if (opcio > 0 && opcio <= OPCIONS.length)
+                error = false;
+        }
+        System.out.println();
+
+        return opcio;
+    }
+
+    private static void mostrarSessions() {
+        System.out.println("========================================");
+        for (int a = 0; a < sessions.size(); a++) {
+            System.out.println("    " + (a + 1) + ". " + sessions.get(a).toString());
+        }
+        System.out.println("========================================");
+    }
+
+    private static void mostrarObres() {
+        System.out.println("========================================");
+        for (int a = 0; a < obres.size(); a++) {
+            System.out.println("    " + (a + 1) + ". " + obres.get(a).toString());
+        }
+        System.out.println("========================================");
+    }
+
+    private static void mostrarEspectadors() {
+        System.out.println("========================================");
+        for (int a = 0; a < espectadors.size(); a++) {
+            System.out.println("    " + (a + 1) + ". " + espectadors.get(a).toString());
+        }
+        System.out.println("========================================");
+    }
+
+    private static Sessio crearSessio() {
+        Obra obra;
+        double preu;
+        String hora, dia;
+        int fila, columna, opcio;
+
+        if (obres.isEmpty())
+            System.out.println("[!] Has de crear com a mínim una Obra per a poder assignar-la");
+        else {
+            mostrarObres();
+            System.out.print("[?] Escull una Obra a assignar: ");
+            opcio = teclat.nextInt();
+
+            if (opcio <= 0 || opcio > obres.size()) {
+                System.out.println("[!] L'opció escollida no es correspon amb ninguna Obra");
+                return null;
+            } else {
+                obra = obres.get(opcio);
+            }
+
+            System.out.println();
+            System.out.print("[?] Escull el preu de la Sessió: ");
+            preu = teclat.nextDouble();
+            System.out.println();
+            System.out.print("[?] Escull el dia de la Sessió: ");
+            dia = teclat.next();
+            System.out.println();
+            System.out.print("[?] Escull l'hora de la Sessió: ");
+            hora = teclat.next();
+            System.out.println();
+            System.out.print("[?] Escull el número de fileres de les butaques: ");
+            fila = teclat.nextInt();
+            System.out.println();
+            System.out.print("[?] Escull el número de columnes de les butaques: ");
+            columna = teclat.nextInt();
+            System.out.println();
+
+            Sessio sessio = new Sessio(obra, preu, hora, dia, fila, columna);
+            sessions.add(sessio);
+
+            return sessio;
+        }
+
+        return null;
+    }
+
+    private static void modificarSessio(Sessio sessio) {
+        int opcio;
+
+        System.out.print("[?] Vols modificar l'Obra? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s") && !obres.isEmpty()) {
+            mostrarObres();
+            System.out.print("[?] Escull una nova Obra: ");
+            opcio = teclat.nextInt();
+            if (opcio <= 0 || opcio > obres.size())
+                System.out.println("[!] L'Obra no s'ha modificat");
+            else {
+                sessio.setObra(obres.get(opcio));
+                System.out.println("[i] Obra canviada a " + obres.get(opcio).getTitol());
+            }
+        }
+        System.out.println();
+
+        System.out.print("[?] Vols modificar el preu? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s")) {
+            System.out.print("[?] Escull el nou preu: ");
+            sessio.setPreu(teclat.nextDouble());
+        }
+        System.out.println();
+
+        System.out.print("[?] Vols modificar l'hora? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s")) {
+            System.out.print("[?] Escull una nova hora: ");
+            sessio.setHora(teclat.next());
+        }
+        System.out.println();
+
+        System.out.print("[?] Vols modificar el dia? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s")) {
+            System.out.print("[?] Escull un nou dia: ");
+            sessio.setDia(teclat.next());
+        }
+        System.out.println();
+    }
+
+    private static void modificarObra(Obra obra) {
+        System.out.print("[?] Vols modificar el títol? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s") || !obres.isEmpty()) {
+            System.out.print("[?] Escull el nou títol: ");
+            obra.setTitol(teclat.next());
+        }
+        System.out.println();
+
+        System.out.print("[?] Vols modificar la durada? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s") || !obres.isEmpty()) {
+            System.out.print("[?] Escull una nova durada: ");
+            obra.setDurada(teclat.nextInt());
+        }
+        System.out.println();
+
+        System.out.print("[?] Vols modificar l'autor? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s") || !obres.isEmpty()) {
+            System.out.print("[?] Escull un nou autor: ");
+            obra.setAutor(teclat.next());
+        }
+        System.out.println();
+
+        System.out.print( // la edat haura de ser la que vulgem es ha dir per ha majors de 16 o14 el que
+                          // volgem
+                "[?] Vols modificar el tipus de públic admès (+18 o -18)? ('s' per modificar, qualsevol altre per no modificar): ");
+        if (teclat.nextLine().equalsIgnoreCase("s") || !obres.isEmpty()) {
+            System.out.print("[?] Entra 's' per canviar l'Obra a +18, qualsevol altre per al cas contrari: ");
+            if (teclat.next().equalsIgnoreCase("s"))
+                obra.setEdat(true);
+            else
+                obra.setEdat(false);
+        }
+        System.out.println();
+    }
+
+    private static Espectador registrarEspectador() {
+        String nom;
+        int edat, min_diners = 5, max_diners = 60;
+        double diners;
+
+        System.out.print("[?] Indica el nom de l'Espectador: ");
+        nom = teclat.next();
+        System.out.println();
+        System.out.print("[?] Indica l'edat de l'Espectador: ");
+        edat = teclat.nextInt();
+        System.out.println();
+        diners = (double) Math.floor(Math.random() * (max_diners - min_diners + 1) + min_diners);
+        System.out.print("[i] " + nom + " ha indicat que té un total de " + diners + "€");
+        System.out.println();
+
+        Espectador espectador = new Espectador(nom, edat, diners);
+        espectadors.add(espectador);
+
+        return espectador;
+    }
+
+    private static void assignarEspectador(Sessio sessio, Espectador espectador, int filera, int butaca) {
+        if (!sessio.butaquesPlenes() && sessio.potEntrar(espectador)) { // Estos des mètodes s'han de canviar (Són del
+                                                                        // Projecte de Tudor)
+            if (sessio.assignarSeient(espectador, filera, butaca))
+                System.out.println("[i] " + espectador.getNom() + " ha estat assignat a la Filera " + filera
+                        + " i Butaca " + butaca);
+            else
+                System.out.println("[!] La Filera " + filera + " i Butaca " + butaca
+                        + " ja està assignada a l'Espectador " + sessio.getSeients()[filera][butaca].getNom());
+        }
+
+        System.out.println(
+                "[!] No s'ha pogut assignar l'Espectador per falta d'espai o per no assolir els requeriments de la Sessió");
+    }
+}
