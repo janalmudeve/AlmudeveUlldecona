@@ -11,9 +11,9 @@ public class Main {
 
     private static Scanner teclat = new Scanner(System.in);
 
-    private static ArrayList<Obra> obres = new ArrayList<Obra>();
-    private static ArrayList<Sessio> sessions = new ArrayList<Sessio>();
-    private static ArrayList<Espectador> espectadors = new ArrayList<Espectador>();
+    private static Obra[] obra = new Obra[10];
+    private static Sessio[] sessio = new Sessio[10];
+    private static Espectador[] espectador = new Espectador[10];
 
     private static final String[] OPCIONS = { "Crea una Sessió nova", "Mostrar Sessions existents",
             "Modificar una Sessió", "Crea una Obra",
@@ -21,6 +21,10 @@ public class Main {
             "Assignar un Espectador a una Sessió",
             "Mostrar pati de butaques", "Sortir" };
 
+    /** 
+     * @param args
+     * switch per a clasificar les opcions i executar la opcio triada
+     */
     public static void main(String[] args) {
         boolean end = false;
         int opcioEscollida;
@@ -46,8 +50,8 @@ public class Main {
                     System.out.print("[?] Escull una Sessió per modificar: ");
                     opcioEscollida = (teclat.nextInt() - 1);
                     System.out.println();
-                    if (opcioEscollida >= 0 && opcioEscollida < sessions.size())
-                        modificarSessio(sessions.get(opcioEscollida));
+                    if (opcioEscollida >= 0 && opcioEscollida < sessions.length())
+                        modificarSessio(sessions.[opcioEscollida]);
                     else
                         System.out.println("[!] L'opció escollida no es correspon amb ninguna Sessió");
                     break;
@@ -65,8 +69,8 @@ public class Main {
                     System.out.print("[?] Escull una Obra per modificar: ");
                     opcioEscollida = (teclat.nextInt() - 1);
                     System.out.println();
-                    if (opcioEscollida >= 0 && opcioEscollida < obres.size()) {
-                        modificarObra(obres.get(opcioEscollida));
+                    if (opcioEscollida >= 0 && opcioEscollida < obres.length()) {
+                        modificarObra(obres.[opcioEscollida]);
                     } else {
                         System.out.println("[!] L'opció escollida no es correspon amb ninguna Obra");
                     }
@@ -85,16 +89,16 @@ public class Main {
                     System.out.print("[?] Escull un Espectador a assignar a una Sessió: ");
                     opcioEscollida = (teclat.nextInt() - 1);
                     System.out.println();
-                    if (opcioEscollida >= 0 && opcioEscollida < espectadors.size()) {
-                        espectador = espectadors.get(opcioEscollida);
+                    if (opcioEscollida >= 0 && opcioEscollida < espectadors.length()) {
+                        espectador = espectadors.[opcioEscollida];
                         mostrarSessions();
                         System.out.print(
                                 "[?] Escull la Sessió en què serà assignada l'Espectador " + espectador.getNom()
                                         + ": ");
                         opcioEscollida = (teclat.nextInt() - 1);
                         System.out.println();
-                        if (opcioEscollida >= 0 && opcioEscollida < sessions.size()) {
-                            sessio = sessions.get(opcioEscollida);
+                        if (opcioEscollida >= 0 && opcioEscollida < sessions.length()) {
+                            sessio = sessions.[opcioEscollida];
 
                             System.out.println("[i] Actualment aquesta Sessió disposa de " + sessio.getSeients().length
                                     + " Fileres i " + sessio.getSeients()[0].length + " Butaques");
@@ -128,10 +132,10 @@ public class Main {
                     System.out.print("[?] Escull una Sessió per a mostrar el Pati de Butaques: ");
                     opcioEscollida = (teclat.nextInt() - 1);
                     System.out.println();
-                    if (opcioEscollida < 0 || opcioEscollida >= sessions.size()) {
+                    if (opcioEscollida < 0 || opcioEscollida >= sessions.length()) {
                         System.out.println("[!] L'opció escollida no es correspon amb ninguna de les Sessións");
                     } else {
-                        Sessio sessio_escollida = sessions.get(opcioEscollida);
+                        Sessio sessio_escollida = sessions.[opcioEscollida];
                         String butaques = "";
 
                         for (int i = 0; i < sessio_escollida.getSeients().length; i++) {
@@ -165,6 +169,11 @@ public class Main {
         System.out.println("========================================");
     }
 
+    /**
+     * Escollir la opcio
+     * 
+     * @return int
+     */
     private static int escollirOpcio() {
         int opcio;
         boolean error = false;
@@ -188,28 +197,32 @@ public class Main {
 
     private static void mostrarSessions() {
         System.out.println("========================================");
-        for (int a = 0; a < sessions.size(); a++) {
-            System.out.println("    " + (a + 1) + ". " + sessions.get(a).toString());
+        for (int a = 0; a < sessions.length(); a++) {
+            System.out.println("    " + (a + 1) + ". " + sessions.[a].toString());
         }
         System.out.println("========================================");
     }
 
     private static void mostrarObres() {
         System.out.println("========================================");
-        for (int a = 0; a < obres.size(); a++) {
-            System.out.println("    " + (a + 1) + ". " + obres.get(a).toString());
+        for (int a = 0; a < obres.length(); a++) {
+            System.out.println("    " + (a + 1) + ". " + obres.[a].toString());
         }
         System.out.println("========================================");
     }
 
     private static void mostrarEspectadors() {
         System.out.println("========================================");
-        for (int a = 0; a < espectadors.size(); a++) {
-            System.out.println("    " + (a + 1) + ". " + espectadors.get(a).toString());
+        for (int a = 0; a < espectadors.length(); a++) {
+            System.out.println("    " + (a + 1) + ". " + espectadors.[a].toString());
         }
         System.out.println("========================================");
     }
 
+    /**
+     * Crear una Sessio
+     * @return Sessio
+     */
     private static Sessio crearSessio() {
         Obra obra;
         double preu;
@@ -223,11 +236,11 @@ public class Main {
             System.out.print("[?] Escull una Obra a assignar: ");
             opcio = (teclat.nextInt() - 1);
 
-            if (opcio < 0 || opcio >= obres.size()) {
+            if (opcio < 0 || opcio >= obres.length()) {
                 System.out.println("[!] L'opció escollida no es correspon amb ninguna Obra");
                 return null;
             } else {
-                obra = obres.get(opcio);
+                obra = obres.[opcio];
             }
 
             System.out.println();
@@ -256,6 +269,11 @@ public class Main {
         return null;
     }
 
+    /**
+     * crear una Obra
+     * 
+     * @return Obra
+     */
     private static Obra crearObra() {
         String titol, autor, edat;
         int durada;
@@ -284,6 +302,10 @@ public class Main {
         return obra;
     }
 
+    /**
+     * Modificar una Sessio ja creada
+     * @param sessio
+     */
     private static void modificarSessio(Sessio sessio) {
         int opcio;
 
@@ -292,11 +314,11 @@ public class Main {
             mostrarObres();
             System.out.print("[?] Escull una nova Obra: ");
             opcio = teclat.nextInt();
-            if (opcio <= 0 || opcio > obres.size())
+            if (opcio <= 0 || opcio > obres.length())
                 System.out.println("[!] L'Obra no s'ha modificat");
             else {
-                sessio.setObra(obres.get(opcio));
-                System.out.println("[i] Obra canviada a " + obres.get(opcio).getTitol());
+                sessio.setObra(obres.[opcio]);
+                System.out.println("[i] Obra canviada a " + obres.[opcio].getTitol());
             }
         }
         System.out.println();
@@ -323,6 +345,11 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     * Modificar una Obra ja creada
+     * 
+     * @param obra
+     */
     private static void modificarObra(Obra obra) {
         System.out.print("[?] Vols modificar el títol? ('s' per modificar, qualsevol altre per no modificar): ");
         if (teclat.next().equalsIgnoreCase("s")) {
@@ -357,6 +384,11 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     * Crear un Espectador
+     * 
+     * @return Espectador
+     */
     private static Espectador registrarEspectador() {
         String nom;
         int edat, min_diners = 5, max_diners = 60;
@@ -378,6 +410,14 @@ public class Main {
         return espectador;
     }
 
+    /**
+     * Assignar un espectador a una Obra i Sessio
+     * 
+     * @param sessio
+     * @param espectador
+     * @param filera
+     * @param butaca
+     */
     private static void assignarEspectador(Sessio sessio, Espectador espectador, int filera, int butaca) {
         if (sessio.potEntrar(sessio.getObra(), espectador)) {
             if (sessio.assignarSeient(espectador, filera, butaca)) {
